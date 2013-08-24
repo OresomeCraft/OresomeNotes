@@ -11,7 +11,7 @@ public class OresomeCommands implements CommandExecutor {
 
     public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
         if(cmd.getName().equalsIgnoreCase("notes")) {
-            if(sender.hasPermission("BattleNotes.staff")) {
+            if(sender.hasPermission("oresomenotes.staff")) {
                 if(args.length <= 16 && args.length >= 0) {
                     String query = args[0];
                     String perform = args[1];
