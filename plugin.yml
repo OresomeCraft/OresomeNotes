@@ -1,0 +1,7 @@
+name: OresomeNotes
+main: com.huskehhh.oresomenotes
+version: 1.0
+commands:
+    notes:
+        description:
+        usage:
