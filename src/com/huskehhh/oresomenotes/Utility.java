@@ -14,8 +14,8 @@ public class Utility {
 
     public static List<Player> getStaff() {
         List<Player> staff = new ArrayList<Player>();
-        for(Player p : OresomeNotes.getInstance().getServer().getOnlinePlayers()) {
-            if(p.hasPermission("oresomenotes.staff")) staff.add(p);
+        for (Player p : OresomeNotes.getInstance().getServer().getOnlinePlayers()) {
+            if (p.hasPermission("oresomenotes.staff")) staff.add(p);
         }
         return staff;
     }
@@ -41,9 +41,9 @@ public class Utility {
         List<String> notes = OresomeNotes.getInstance().config.getStringList(p.getName() + ".notes");
         ListIterator<String> iter = notes.listIterator();
         int count = 0;
-        while(iter.hasNext()) {
+        while (iter.hasNext()) {
             count++;
-            if(count == entry) {
+            if (count == entry) {
                 iter.remove();
                 break;
             }
@@ -52,11 +52,11 @@ public class Utility {
 
     public static String argBuilding(String[] arg) {
         String build = "";
-        for(int count = 2; count < arg.length; count++) {
+        for (int count = 2; count < arg.length; count++) {
             String str = removeSpaceAtStart(arg[count]);
-            if(arg[count] != null) {
+            if (arg[count] != null) {
                 build = build + " " + str;
-            } else if(arg[count].equalsIgnoreCase(" ")) {
+            } else if (arg[count].equalsIgnoreCase(" ")) {
                 build = str + " ";
             } else {
                 break;
@@ -64,9 +64,9 @@ public class Utility {
         }
         return removeSpaceAtStart(build);
     }
-    
+
     public static String removeSpaceAtStart(String str) {
-        if(str.startsWith(" ")) {
+        if (str.startsWith(" ")) {
             return str.replaceFirst(" ", "");
         }
         return str;
@@ -88,7 +88,7 @@ public class Utility {
 
     public static boolean hasNotes(Player p) {
         List<String> notes = getNotes(p);
-        if(notes.get(1) != null) {
+        if (notes.get(1) != null) {
             return true;
         }
         return false;
@@ -98,11 +98,11 @@ public class Utility {
         List<Player> staff = getStaff();
         List<String> notes = OresomeNotes.getInstance().config.getStringList(p.getName() + ".notes");
         ListIterator<String> iter = notes.listIterator();
-        for(Player s : staff) {
+        for (Player s : staff) {
             s.sendMessage(ChatColor.GREEN + "=====Notes for " + ChatColor.RED + p.getName() + ChatColor.GREEN + "======");
-            while(iter.hasNext()) {
+            while (iter.hasNext()) {
                 String in = iter.next();
-                if(!in.equals("dataManage--noedit")) {
+                if (!in.equals("dataManage--noedit")) {
                     s.sendMessage(ChatColor.BLUE + Utility.readFromConfig(in));
                 }
             }
