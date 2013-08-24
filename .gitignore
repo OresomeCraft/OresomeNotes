@@ -1,3 +1,4 @@
+
 #################
 ## Eclipse
 #################
@@ -15,14 +16,7 @@ local.properties
 .classpath
 .settings/
 .loadpath
-/target
-/dependency-reduced-pom.xml
 
-# intellij
-*.iml
-*.ipr
-*.iws
-.idea/
 
 # External tool builders
 .externalToolBuilders/
@@ -61,3 +55,38 @@ pip-log.txt
 
 # Mac crap
 .DS_Store
+
+#################
+## Various
+#################
+
+# NetBeans
+/nbproject
+
+# Maven
+/target
+*/target
+/dependency-reduced-pom.xml
+
+# vim
+.*.sw[a-p]
+
+# Various other potential build files
+/build
+/bin
+/dist
+/manifest.mf
+
+/world
+
+# Mac filesystem dust
+.DS_Store
+
+# IntelliJ
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# Gradle
+/gradle

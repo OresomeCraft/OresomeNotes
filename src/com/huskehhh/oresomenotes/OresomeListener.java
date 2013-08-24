@@ -15,11 +15,11 @@ public class OresomeListener implements Listener {
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
-        if(Utility.hasNotes(e.getPlayer())) {
+        if (Utility.hasNotes(e.getPlayer())) {
             Utility.sendStaffNotes(e.getPlayer());
         }
         YamlConfiguration config = YamlConfiguration.loadConfiguration(new File("plugins/OresomeNotes/config.yml"));
-        if(!config.getStringList(e.getPlayer().getName() + ".notes").contains("dataManage--noedit")) {
+        if (!config.getStringList(e.getPlayer().getName() + ".notes").contains("dataManage--noedit")) {
             List<String> ls = new ArrayList<String>();
             ls.add("dataManage--noedit");
             config.set(e.getPlayer().getName() + ".notes", ls);
