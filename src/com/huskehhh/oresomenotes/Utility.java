@@ -15,7 +15,7 @@ public class Utility {
     public static List<Player> getStaff() {
         List<Player> staff = new ArrayList<Player>();
         for(Player p : OresomeNotes.getInstance().getServer().getOnlinePlayers()) {
-            if(p.hasPermission("banmanager.ban")) staff.add(p);
+            if(p.hasPermission("oresomenotes.staff")) staff.add(p);
         }
         return staff;
     }
