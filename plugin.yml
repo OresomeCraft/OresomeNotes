@@ -1,5 +1,5 @@
 name: OresomeNotes
-main: com.huskehhh.oresomenotes
+main: com.huskehhh.oresomenotes.OresomeNotes
 version: 1.0
 commands:
     notes:
