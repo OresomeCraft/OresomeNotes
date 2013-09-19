@@ -88,7 +88,7 @@ public class Utility {
 
     public static boolean hasNotes(Player p) {
         List<String> notes = getNotes(p);
-        if (notes.get(1) != null) {
+        if (notes.size() > 1) {
             return true;
         }
         return false;
