@@ -63,7 +63,7 @@ public class OresomeCommands implements CommandExecutor {
                     } else {
                         if (OresomeNotes.getInstance().getServer().getPlayer(args[0]) != null) {
                             ListIterator<String> read = Utility.iterRead(OresomeNotes.getInstance().getServer().getPlayer(args[0]));
-                            sender.sendMessage(ChatColor.GREEN + "===== Notes for " + ChatColor.RED + args[0] + ChatColor.GREEN + " ======");
+                            sender.sendMessage(ChatColor.GREEN + "===== Notes for " + ChatColor.RED + OresomeNotes.getInstance().getServer().getPlayer(args[0]).getName() + ChatColor.GREEN + " ======");
                             while (read.hasNext()) {
                                 String in = read.next();
                                 if (!in.equals("dataManage--noedit")) {
