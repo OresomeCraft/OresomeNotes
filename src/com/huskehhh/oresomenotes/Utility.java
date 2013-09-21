@@ -99,7 +99,7 @@ public class Utility {
         List<String> notes = OresomeNotes.getInstance().config.getStringList(p.getName() + ".notes");
         ListIterator<String> iter = notes.listIterator();
         for (Player s : staff) {
-            s.sendMessage(ChatColor.GREEN + "=====Notes for " + ChatColor.RED + p.getName() + ChatColor.GREEN + "======");
+            s.sendMessage(ChatColor.GREEN + "===== Notes for " + ChatColor.RED + p.getName() + ChatColor.GREEN + " ======");
             while (iter.hasNext()) {
                 String in = iter.next();
                 if (!in.equals("dataManage--noedit")) {
