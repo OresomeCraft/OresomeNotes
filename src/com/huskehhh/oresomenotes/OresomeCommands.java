@@ -1,11 +1,11 @@
 package com.huskehhh.oresomenotes;
 
-import java.util.ListIterator;
-
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+
+import java.util.ListIterator;
 
 public class OresomeCommands implements CommandExecutor {
 

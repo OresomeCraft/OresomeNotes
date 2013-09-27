@@ -1,14 +1,14 @@
 package com.huskehhh.oresomenotes;
 
+import org.bukkit.ChatColor;
+import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
-
-import org.bukkit.ChatColor;
-import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.entity.Player;
 
 public class Utility {
 
@@ -88,7 +88,7 @@ public class Utility {
 
     public static boolean hasNotes(Player p) {
         List<String> notes = getNotes(p);
-        if (notes.size() > 1) {
+        if (notes.size() >= 2) {
             return true;
         }
         return false;
