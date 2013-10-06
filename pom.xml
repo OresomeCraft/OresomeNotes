@@ -1,70 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>OresomeNotes</groupId>
+    <groupId>com.oresomecraft</groupId>
     <artifactId>OresomeNotes</artifactId>
-    <name>OresomeNotes ${project.version}</name>
-	<version>1.0</version>
-    <description>A player notes plugin for OresomeCraft</description>
-	
-	<issueManagement>
-        <system>GitHub</system>
-        <url>https://github.com/oresomecraft/oresomenotes/issues</url>
-    </issueManagement>
-
+    <packaging>jar</packaging>
+    <name>OresomeNotes</name>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <main.class>com.oresomecraft.oresomenotes.OresomeNotes</main.class>
+    </properties>
     <build>
-        <sourceDirectory>src</sourceDirectory>
-        <defaultGoal>clean package</defaultGoal>
-        <directory>target</directory>
-        <finalName>OresomeNotes</finalName>
-        <plugins>
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
-                <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
-                </configuration>
-            </plugin>
-        </plugins>
+        <finalName>${project.name}</finalName>
+        <sourceDirectory>${basedir}/src</sourceDirectory>
         <resources>
             <resource>
                 <targetPath>.</targetPath>
                 <filtering>true</filtering>
-                <directory>${project.basedir}</directory>
+                <directory>${basedir}/</directory>
                 <includes>
                     <include>plugin.yml</include>
-                    <include>config.yml</include>
-                    <include>README.md</include>
                 </includes>
             </resource>
         </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <!-- Shade plugin: Used to include sk89q's command framework into the jar -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>2.0</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <artifactSet>
+                                <includes>
+                                    <include>com.sk89q:sk89q-command-framework</include>
+                                </includes>
+                            </artifactSet>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
     </build>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.bukkit</groupId>
+            <artifactId>bukkit</artifactId>
+            <version>LATEST</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.sk89q</groupId>
+            <artifactId>sk89q-command-framework</artifactId>
+            <version>0.3</version>
+            <type>jar</type>
+        </dependency>
+    </dependencies>
     <repositories>
         <repository>
-            <id>project.local</id>
-            <name>local repo</name>
-            <url>file:${project.basedir}/lib</url>
-        </repository>
-        <repository>
-            <id>github-repo</id>
-            <url>http://github.com/oresomecraft/oresomenotes</url>
+            <id>OresomeCraft</id>
+            <url>http://assets.oresomecraft.com/maven</url>
         </repository>
         <repository>
             <id>bukkit-repo</id>
             <url>http://repo.bukkit.org/content/groups/public</url>
         </repository>
     </repositories>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.bukkit</groupId>
-            <artifactId>craftbukkit</artifactId>
-            <version>LATEST</version>
-        </dependency>
-    </dependencies>
+    <description>A plugin that lets staff members tag players with notes.</description>
+    <organization>
+        <name>OresomeCraft</name>
+        <url>http://oresomecraft.com/</url>
+    </organization>
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/OresomeCraft/OresomeNotes/issues</url>
+    </issueManagement>
+    <inceptionYear>2013-98-30</inceptionYear>
+    <url>http://oresomecraft.com/</url>
+    <version>1.0</version>
 </project>
