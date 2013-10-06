@@ -4,10 +4,8 @@ import com.sk89q.minecraft.util.commands.*;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 
 import java.util.List;
-import java.util.ListIterator;
 
 public class OresomeCommands {
     OresomeNotes plugin;
@@ -28,7 +26,7 @@ public class OresomeCommands {
                 if (Utility.hasBlacklist(args.getString(1).toLowerCase()) == false) {
                     if (args.argsLength() > 2) {
                         Utility.addNote(args.getString(1).toLowerCase(), args.getJoinedStrings(2));
-                        sender.sendMessage(ChatColor.GREEN + "Success fully added note to " + ChatColor.RED + args.getString(1));
+                        sender.sendMessage(ChatColor.GREEN + "Successfully added note to " + ChatColor.RED + args.getString(1));
                         //Just in case we want to link it to something else.
                         Bukkit.getPluginManager().callEvent(new PlayerTagEvent(args.getString(1), args.getJoinedStrings(2), sender.getName()));
                     } else {
@@ -65,12 +63,12 @@ public class OresomeCommands {
                 if (args.argsLength() == 2) {
                     if (OresomeNotes.getInstance().getConfig().contains(args.getString(1).toLowerCase())) {
                         List<String> notes = OresomeNotes.getInstance().getConfig().getStringList(args.getString(1).toLowerCase() + ".notes");
-                        if(notes.size() > 0){
-                        sender.sendMessage(ChatColor.RED + "WARNING: Player " + ChatColor.GOLD + args.getString(1) + ChatColor.RED + " has attached notes!");
-                        for (String st : notes) {
-                            sender.sendMessage(ChatColor.BLUE + st);
-                        }
-                        }else{
+                        if (notes.size() > 0) {
+                            sender.sendMessage(ChatColor.RED + "WARNING: Player " + ChatColor.GOLD + args.getString(1) + ChatColor.RED + " has attached notes!");
+                            for (String st : notes) {
+                                sender.sendMessage(ChatColor.BLUE + st);
+                            }
+                        } else {
                             sender.sendMessage(ChatColor.GREEN + "This person's record is clean!");
                         }
                     } else {

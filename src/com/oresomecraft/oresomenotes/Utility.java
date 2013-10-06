@@ -42,9 +42,9 @@ public class Utility {
 
     public static void removeBlacklist(String p) {
         List<String> tmp1 = OresomeNotes.getInstance().getConfig().getStringList("blacklist");
-        try{
-        tmp1.remove(p);
-        }catch(Exception e){
+        try {
+            tmp1.remove(p);
+        } catch (Exception e) {
             e.printStackTrace();
             //It might not exist, even though I don't think it'll throw an error.
         }
@@ -52,7 +52,7 @@ public class Utility {
         OresomeNotes.getInstance().saveConfig();
     }
 
-    public static boolean hasBlacklist(String p){
+    public static boolean hasBlacklist(String p) {
         return OresomeNotes.getInstance().getConfig().getStringList("blacklist").contains(p);
     }
 
@@ -64,21 +64,20 @@ public class Utility {
         while (iter.hasNext() && stopcheck == false) {
             count++;
             if (count == entry - 1) {
-                try{
-                sender.sendMessage(ChatColor.RED + "Removed message " + notes.get(count));
-                notes.remove(count);
-                }catch(IndexOutOfBoundsException e){
+                try {
+                    sender.sendMessage(ChatColor.RED + "Removed message " + notes.get(count));
+                    notes.remove(count);
+                } catch (IndexOutOfBoundsException e) {
                     stopcheck = true;
                 }
                 break;
             }
         }
-        if(notes.size() == 0){
+        if (notes.size() == 0) {
             OresomeNotes.getInstance().getConfig().set(p.toLowerCase() + ".notes", null);
             OresomeNotes.getInstance().saveConfig();
             sender.sendMessage(ChatColor.RED + "No more notes are tagged to this player!");
             return;
-
         }
         OresomeNotes.getInstance().getConfig().set(p.toLowerCase() + ".notes", notes);
         OresomeNotes.getInstance().saveConfig();
@@ -103,9 +102,9 @@ public class Utility {
         List<Player> staff = getStaff();
         List<String> notes = OresomeNotes.getInstance().getConfig().getStringList(p.getName().toLowerCase() + ".notes");
         for (Player s : staff) {
-            s.sendMessage(ChatColor.RED+ "WARNING: Player " + ChatColor.GOLD + p.getName() + ChatColor.RED + " has attached notes!");
-            for(String st : notes){
-                  s.sendMessage(ChatColor.BLUE + st);
+            s.sendMessage(ChatColor.RED + "WARNING: Player " + ChatColor.GOLD + p.getName() + ChatColor.RED + " has attached notes!");
+            for (String st : notes) {
+                s.sendMessage(ChatColor.BLUE + st);
             }
         }
     }
