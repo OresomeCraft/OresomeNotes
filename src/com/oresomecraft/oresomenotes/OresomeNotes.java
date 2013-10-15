@@ -1,13 +1,9 @@
 package com.oresomecraft.oresomenotes;
 
-import java.io.File;
-import java.io.IOException;
-
 import com.sk89q.bukkit.util.CommandsManagerRegistration;
 import com.sk89q.minecraft.util.commands.*;
 import org.bukkit.ChatColor;
 import org.bukkit.World;
-import org.bukkit.*;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
@@ -15,10 +11,17 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.io.File;
+import java.io.IOException;
+
 public class OresomeNotes extends JavaPlugin {
 
     private static OresomeNotes plugin;
     public YamlConfiguration config = YamlConfiguration.loadConfiguration(new File("plugins/OresomeNotes/config.yml"));
+
+    public static OresomeNotes getInstance() {
+        return plugin;
+    }
 
     @Override
     public void onEnable() {
@@ -47,10 +50,6 @@ public class OresomeNotes extends JavaPlugin {
 
     private void manageListeners() {
         this.getServer().getPluginManager().registerEvents(new OresomeListener(), this);
-    }
-
-    public static OresomeNotes getInstance() {
-        return plugin;
     }
 
     /**

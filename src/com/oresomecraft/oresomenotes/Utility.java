@@ -2,12 +2,8 @@ package com.oresomecraft.oresomenotes;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.InvalidConfigurationException;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
@@ -35,9 +31,11 @@ public class Utility {
 
     public static void addBlacklist(String p) {
         List<String> tmp1 = OresomeNotes.getInstance().getConfig().getStringList("blacklist");
-        tmp1.add(p);
-        OresomeNotes.getInstance().getConfig().set("blacklist", tmp1);
-        OresomeNotes.getInstance().saveConfig();
+        if (!tmp1.contains(p)) {
+            tmp1.add(p);
+            OresomeNotes.getInstance().getConfig().set("blacklist", tmp1);
+            OresomeNotes.getInstance().saveConfig();
+        }
     }
 
     public static void removeBlacklist(String p) {
