@@ -25,7 +25,7 @@ public class OresomeCommands {
             if (args.getString(0).equalsIgnoreCase("add")) {
                 if (Utility.hasBlacklist(args.getString(1).toLowerCase()) == false) {
                     if (args.argsLength() > 2) {
-                        Utility.addNote(args.getString(1).toLowerCase(), args.getJoinedStrings(2));
+                        Utility.addNote(args.getString(1).toLowerCase(), args.getJoinedStrings(2), sender.getName());
                         sender.sendMessage(ChatColor.GREEN + "Successfully added note to " + ChatColor.RED + args.getString(1));
                         //Just in case we want to link it to something else.
                         Bukkit.getPluginManager().callEvent(new PlayerTagEvent(args.getString(1), args.getJoinedStrings(2), sender.getName()));

@@ -22,10 +22,10 @@ public class Utility {
         return OresomeNotes.getInstance().getConfig().getStringList(p.toLowerCase() + ".notes");
     }
 
-    public static void addNote(String p, String note) {
+    public static void addNote(String p, String note, String sender) {
         List<String> tmp1 = OresomeNotes.getInstance().getConfig().getStringList(p.toLowerCase() + ".notes");
         tmp1.add(note);
-        OresomeNotes.getInstance().getConfig().set(p + ".notes", tmp1);
+        OresomeNotes.getInstance().getConfig().set(p + ".notes", tmp1 + " [" + sender + "]");
         OresomeNotes.getInstance().saveConfig();
     }
 
