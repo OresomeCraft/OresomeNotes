@@ -29,6 +29,13 @@ public class Utility {
         OresomeNotes.getInstance().saveConfig();
     }
 
+    public static void addAnonymousNote(String p, String note) {
+        List<String> tmp1 = OresomeNotes.getInstance().getConfig().getStringList(p.toLowerCase() + ".notes");
+        tmp1.add(note);
+        OresomeNotes.getInstance().getConfig().set(p + ".notes", tmp1);
+        OresomeNotes.getInstance().saveConfig();
+    }
+
     public static void addBlacklist(String p) {
         List<String> tmp1 = OresomeNotes.getInstance().getConfig().getStringList("blacklist");
         if (!tmp1.contains(p)) {
@@ -52,6 +59,31 @@ public class Utility {
 
     public static boolean hasBlacklist(String p) {
         return OresomeNotes.getInstance().getConfig().getStringList("blacklist").contains(p);
+    }
+
+    public static void addAutomatic(String p) {
+        List<String> tmp1 = OresomeNotes.getInstance().getConfig().getStringList("auto");
+        if (!tmp1.contains(p)) {
+            tmp1.add(p);
+            OresomeNotes.getInstance().getConfig().set("auto", tmp1);
+            OresomeNotes.getInstance().saveConfig();
+        }
+    }
+
+    public static void removeAutomatic(String p) {
+        List<String> tmp1 = OresomeNotes.getInstance().getConfig().getStringList("auto");
+        try {
+            tmp1.remove(p);
+        } catch (Exception e) {
+            e.printStackTrace();
+            //It might not exist, even though I don't think it'll throw an error.
+        }
+        OresomeNotes.getInstance().getConfig().set("auto", tmp1);
+        OresomeNotes.getInstance().saveConfig();
+    }
+
+    public static boolean hasAutomatic(String p) {
+        return OresomeNotes.getInstance().getConfig().getStringList("auto").contains(p);
     }
 
     public static void removeNote(String p, int entry, CommandSender sender) {

@@ -16,7 +16,7 @@ public class OresomeCommands {
 
     @Command(aliases = {"notes", "oresomenotes"},
             desc = "OresomeNotes base command",
-            usage = "<add/remove/removeall/read/blacklist>",
+            usage = "<add/remove/removeall/read/blacklist/auto>",
             min = 0,
             max = 16)
     @CommandPermissions({"oresomenotes.staff"})
@@ -99,11 +99,33 @@ public class OresomeCommands {
                 } else {
                     sender.sendMessage(ChatColor.RED + "Usage: /notes blacklist <remove/add>");
                 }
-            } else {
-                sender.sendMessage(ChatColor.RED + "Usage: /notes <add/remove/removeall/read/blacklist>");
+            } else if (args.getString(0).equalsIgnoreCase("auto")) {
+                if (args.argsLength() > 1) {
+                    if (args.getString(1).equalsIgnoreCase("add")) {
+                        if (args.argsLength() == 3) {
+                            Utility.addAutomatic(args.getString(2).toLowerCase());
+                            sender.sendMessage(ChatColor.GREEN + "Player " + ChatColor.RED + args.getString(2) + ChatColor.GREEN + " will now automatically put notes on players when he/she punishes them!");
+                        } else {
+                            sender.sendMessage(ChatColor.RED + "Usage: /notes auto add <player>");
+                        }
+                    } else if (args.getString(1).equalsIgnoreCase("remove")) {
+                        if (args.argsLength() == 3) {
+                            Utility.removeAutomatic(args.getString(2).toLowerCase());
+                            sender.sendMessage(ChatColor.GREEN + "Player " + ChatColor.RED + args.getString(2) + ChatColor.GREEN + " will no longer automatically put notes on players!");
+                        } else {
+                            sender.sendMessage(ChatColor.RED + "Usage: /notes auto remove <player>");
+                        }
+                    } else {
+                        sender.sendMessage(ChatColor.RED + "Usage: /notes auto <remove/add>");
+                    }
+                } else {
+                    sender.sendMessage(ChatColor.RED + "Usage: /notes auto <remove/add>");
+                }
+            }  else {
+                sender.sendMessage(ChatColor.RED + "Usage: /notes <add/remove/removeall/read/blacklist/auto>");
             }
         } else {
-            sender.sendMessage(ChatColor.RED + "Usage: /notes <add/remove/removeall/read/blacklist>");
+            sender.sendMessage(ChatColor.RED + "Usage: /notes <add/remove/removeall/read/blacklist/auto>");
         }
     }
 }

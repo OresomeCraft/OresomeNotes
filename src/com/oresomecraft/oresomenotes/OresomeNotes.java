@@ -27,7 +27,7 @@ public class OresomeNotes extends JavaPlugin {
     public void onEnable() {
         createConfig();
 
-        manageListeners();
+        new OresomeListener(this);
 
         registerCommands();
 
@@ -46,10 +46,6 @@ public class OresomeNotes extends JavaPlugin {
                 e.printStackTrace();
             }
         }
-    }
-
-    private void manageListeners() {
-        this.getServer().getPluginManager().registerEvents(new OresomeListener(), this);
     }
 
     /**
