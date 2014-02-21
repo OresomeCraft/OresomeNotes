@@ -91,7 +91,7 @@ public class Utility {
         ListIterator<String> iter = notes.listIterator();
         int count = 0;
         boolean stopcheck = false;
-        while (iter.hasNext() && stopcheck == false) {
+        while (iter.hasNext() && !stopcheck) {
             count++;
             if (count == entry - 1) {
                 try {
@@ -122,10 +122,7 @@ public class Utility {
 
     public static boolean hasNotes(Player p) {
         List<String> notes = getNotes(p.getName());
-        if (notes.size() > 0) {
-            return true;
-        }
-        return false;
+        return (notes.size() > 0);
     }
 
     public static void sendStaffNotes(Player p) {

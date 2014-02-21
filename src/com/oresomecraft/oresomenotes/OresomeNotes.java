@@ -107,11 +107,7 @@ public class OresomeNotes extends JavaPlugin {
     }
 
     public boolean hasPermission(CommandSender sender, World world, String perm) {
-        if ((sender.isOp() && opPermissions) || sender instanceof ConsoleCommandSender || sender.hasPermission(perm)) {
-            return true;
-        }
-
-        return false;
+        return ((sender.isOp() && opPermissions) || sender instanceof ConsoleCommandSender || sender.hasPermission(perm));
     }
 
     public void checkPermission(CommandSender sender, String perm)

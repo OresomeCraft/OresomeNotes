@@ -21,8 +21,8 @@ public class OresomeListener implements Listener {
     }
 
     @EventHandler
-    public void onPlayerJoin(PlayerJoinEvent e) {
-        final Player p = e.getPlayer();
+    public void onPlayerJoin(PlayerJoinEvent event) {
+        final Player p = event.getPlayer();
         Bukkit.getScheduler().runTaskLater(OresomeNotes.getInstance(), new Runnable() {
             public void run() {
                 if (Utility.hasNotes(p)) {
@@ -33,12 +33,12 @@ public class OresomeListener implements Listener {
     }
 
     @EventHandler
-    public void automaticNoteListener(PlayerCommandPreprocessEvent e) {
-        if (!Utility.hasAutomatic(e.getPlayer().getName().toLowerCase())) return;
-        if (e.getMessage().toString().startsWith("/mute") || e.getMessage().toString().startsWith("/tempmute") || e.getMessage().toString().startsWith("/ban") ||
-                e.getMessage().toString().startsWith("/tempban") || e.getMessage().toString().startsWith("/kick")){
-            e.getPlayer().sendMessage(ChatColor.RED + "A note was automatically added to the player!");
-            Utility.addAnonymousNote(argToTarget(e.getMessage()), argBuilderReason(e.getMessage()));
+    public void automaticNoteListener(PlayerCommandPreprocessEvent event) {
+        if (!Utility.hasAutomatic(event.getPlayer().getName().toLowerCase())) return;
+        if (event.getMessage().startsWith("/mute") || event.getMessage().startsWith("/tempmute") || event.getMessage().startsWith("/ban") ||
+                event.getMessage().startsWith("/tempban") || event.getMessage().startsWith("/kick")){
+            event.getPlayer().sendMessage(ChatColor.RED + "A note was automatically added to the player!");
+            Utility.addAnonymousNote(argToTarget(event.getMessage()), argBuilderReason(event.getMessage()));
         }
     }
 

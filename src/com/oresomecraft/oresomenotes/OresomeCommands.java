@@ -8,6 +8,7 @@ import org.bukkit.command.CommandSender;
 import java.util.List;
 
 public class OresomeCommands {
+
     OresomeNotes plugin;
 
     public OresomeCommands(OresomeNotes pl) {
@@ -22,8 +23,8 @@ public class OresomeCommands {
     @CommandPermissions({"oresomenotes.staff"})
     public void notes(CommandContext args, CommandSender sender) {
         if (args.argsLength() > 1) {
-            if (args.getString(0).equalsIgnoreCase("add")) {
-                if (Utility.hasBlacklist(args.getString(1).toLowerCase()) == false) {
+            if (args.getString(0).equalsIgnoreCase("add") || args.getString(0).equalsIgnoreCase("write")) {
+                if (!Utility.hasBlacklist(args.getString(1).toLowerCase())) {
                     if (args.argsLength() > 2) {
                         Utility.addNote(args.getString(1).toLowerCase(), args.getJoinedStrings(2), sender.getName());
                         sender.sendMessage(ChatColor.GREEN + "Successfully added note to " + ChatColor.RED + args.getString(1));
@@ -35,7 +36,7 @@ public class OresomeCommands {
                 } else {
                     sender.sendMessage(ChatColor.RED + "That person is exempt from being tagged!");
                 }
-            } else if (args.getString(0).equalsIgnoreCase("remove")) {
+            } else if (args.getString(0).equalsIgnoreCase("remove") || args.getString(0).equalsIgnoreCase("delete")) {
                 if (args.argsLength() == 3) {
                     //We don't need a try/catch method because this is controlled by the framework.
                     int i = Integer.parseInt(args.getString(2));
@@ -59,7 +60,7 @@ public class OresomeCommands {
                 } else {
                     sender.sendMessage(ChatColor.RED + "Usage: /notes removeall <player>");
                 }
-            } else if (args.getString(0).equalsIgnoreCase("read")) {
+            } else if (args.getString(0).equalsIgnoreCase("read") || args.getString(0).equalsIgnoreCase("show")) {
                 if (args.argsLength() == 2) {
                     if (OresomeNotes.getInstance().getConfig().contains(args.getString(1).toLowerCase())) {
                         List<String> notes = OresomeNotes.getInstance().getConfig().getStringList(args.getString(1).toLowerCase() + ".notes");

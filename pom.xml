@@ -6,10 +6,12 @@
     <artifactId>OresomeNotes</artifactId>
     <packaging>jar</packaging>
     <name>OresomeNotes</name>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <main.class>com.oresomecraft.oresomenotes.OresomeNotes</main.class>
     </properties>
+
     <build>
         <finalName>${project.name}</finalName>
         <sourceDirectory>${basedir}/src</sourceDirectory>
@@ -56,6 +58,7 @@
             </plugin>
         </plugins>
     </build>
+
     <dependencies>
         <dependency>
             <groupId>org.bukkit</groupId>
@@ -75,6 +78,7 @@
             <type>jar</type>
         </dependency>
     </dependencies>
+
     <repositories>
         <repository>
             <id>OresomeCraft</id>
@@ -85,16 +89,20 @@
             <url>http://repo.bukkit.org/content/groups/public</url>
         </repository>
     </repositories>
+
     <description>A plugin that lets staff members tag players with notes.</description>
+
     <organization>
         <name>OresomeCraft</name>
         <url>http://oresomecraft.com/</url>
     </organization>
+
     <issueManagement>
         <system>GitHub</system>
         <url>https://github.com/OresomeCraft/OresomeNotes/issues</url>
     </issueManagement>
+
     <inceptionYear>2013-98-30</inceptionYear>
     <url>http://oresomecraft.com/</url>
-    <version>1.0</version>
+    <version>1.2</version>
 </project>
