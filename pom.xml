@@ -7,6 +7,8 @@
     <packaging>jar</packaging>
     <name>OresomeNotes</name>
 
+    <description>A plugin that lets staff members tag players with notes.</description>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <main.class>com.oresomecraft.oresomenotes.OresomeNotes</main.class>
@@ -39,7 +41,7 @@
                 <!-- Shade plugin: Used to include sk89q's command framework into the jar -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>2.0</version>
+                <version>2.1</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
@@ -90,8 +92,6 @@
         </repository>
     </repositories>
 
-    <description>A plugin that lets staff members tag players with notes.</description>
-
     <organization>
         <name>OresomeCraft</name>
         <url>http://oresomecraft.com/</url>
@@ -102,7 +102,14 @@
         <url>https://github.com/OresomeCraft/OresomeNotes/issues</url>
     </issueManagement>
 
-    <inceptionYear>2013-98-30</inceptionYear>
+    <inceptionYear>2013-08-24</inceptionYear>
     <url>http://oresomecraft.com/</url>
     <version>1.2</version>
+
+    <scm>
+        <tag>HEAD</tag>
+        <connection>scm:git:git://github.com/OresomeCraft/OresomeNotes.git</connection>
+        <url>https://github.com/OresomeCraft/OresomeNotes</url>
+        <developerConnection>scm:git:ssh://git@github.com:OresomeCraft/OresomeNotes.git</developerConnection>
+    </scm>
 </project>
