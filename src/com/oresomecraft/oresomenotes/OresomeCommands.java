@@ -1,6 +1,8 @@
 package com.oresomecraft.oresomenotes;
 
-import com.sk89q.minecraft.util.commands.*;
+import com.sk89q.minecraft.util.commands.Command;
+import com.sk89q.minecraft.util.commands.CommandContext;
+import com.sk89q.minecraft.util.commands.CommandPermissions;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
@@ -122,11 +124,31 @@ public class OresomeCommands {
                 } else {
                     sender.sendMessage(ChatColor.RED + "Usage: /notes auto <remove/add>");
                 }
-            }  else {
+            } else {
                 sender.sendMessage(ChatColor.RED + "Usage: /notes <add/remove/removeall/read/blacklist/auto>");
             }
         } else {
             sender.sendMessage(ChatColor.RED + "Usage: /notes <add/remove/removeall/read/blacklist/auto>");
+        }
+    }
+
+
+    @Command(aliases = {"hacks", "hack", "h", "hax", "hackusation"},
+            desc = "OresomeNotes hackusation warning command",
+            usage = "<player>",
+            min = 0,
+            max = 1)
+    @CommandPermissions({"oresomenotes.staff"})
+    public void hackusationWarning(CommandContext args, CommandSender sender) {
+        String hackusationMessage = "If you have a hackusation to make, please message a staff member. Don't say it in chat!";
+        if (args.argsLength() > 1) {
+            if (Bukkit.getPlayer(args.getString(0)) != null) {
+                Bukkit.getPlayer(args.getString(0)).sendMessage(ChatColor.BOLD + "" + ChatColor.RED + hackusationMessage);
+            } else {
+                sender.sendMessage(ChatColor.RED + "The player you specified isn't valid! Please specify an online player.");
+            }
+        } else {
+            Bukkit.broadcastMessage(ChatColor.RED + hackusationMessage);
         }
     }
 }
