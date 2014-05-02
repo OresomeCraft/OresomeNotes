@@ -38,8 +38,10 @@ public class OresomeListener implements Listener {
         if (event.getMessage().startsWith("/mute") || event.getMessage().startsWith("/tempmute") ||
                 (event.getMessage().startsWith("/ban") && !event.getMessage().startsWith("/banlist")) ||
                 event.getMessage().startsWith("/tempban") || event.getMessage().startsWith("/kick")) {
-            event.getPlayer().sendMessage(ChatColor.RED + "A note was automatically added to the player!");
-            Utility.addAnonymousNote(argToTarget(event.getMessage()), argBuilderReason(event.getMessage()));
+            if (event.getPlayer().hasPermission("oresomenotes.staff")) {
+                event.getPlayer().sendMessage(ChatColor.RED + "A note was automatically added to the player!");
+                Utility.addAnonymousNote(argToTarget(event.getMessage()), argBuilderReason(event.getMessage()));
+            }
         }
     }
 
